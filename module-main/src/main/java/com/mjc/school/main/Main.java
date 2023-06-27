@@ -1,18 +1,18 @@
 package com.mjc.school.main;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.io.IOException;
 
-@Configuration
-@ComponentScan("com.mjc.school.*")
+@SpringBootApplication
+@EnableJpaAuditing
 public class Main {
     public static void main(String[] args) throws IOException {
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.mjc.school");
-        Menu menu=context.getBean(Menu.class);
+        ApplicationContext context = SpringApplication.run(Main.class, args);
+        Menu menu = context.getBean(Menu.class);
         menu.mainController();
     }
 }
