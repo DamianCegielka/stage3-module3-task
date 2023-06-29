@@ -35,14 +35,22 @@ public class CommandFactory {
                 switch (chosenNumber) {
                     case 1 -> invoker.setCommand(new CreateNewsCommand(newsController));
                     case 2 -> invoker.setCommand(new CreateAuthorCommand(authorController));
-                    case 3 -> invoker.setCommand(new ReadAllNewsCommand(newsController));
-                    case 4 -> invoker.setCommand(new ReadAllAuthorsCommand(authorController));
-                    case 5 -> invoker.setCommand(new ReadNewsByIdCommand(newsController));
-                    case 6 -> invoker.setCommand(new ReadAuthorByIdCommand(authorController));
-                    case 7 -> invoker.setCommand(new UpdateNewsCommand(newsController));
-                    case 8 -> invoker.setCommand(new UpdateAuthorCommand(authorController));
-                    case 9 -> invoker.setCommand(new DeleteNewsByIdCommand(newsController));
-                    case 10 ->invoker.setCommand(new DeleteAuthorByIdCommand(authorController));
+                    case 3 -> System.out.println("TO DO create tag");
+                    case 4 -> invoker.setCommand(new ReadAllNewsCommand(newsController));
+                    case 5 -> invoker.setCommand(new ReadAllAuthorsCommand(authorController));
+                    case 6 -> System.out.println("TO DO get all tags");
+                    case 7 -> invoker.setCommand(new ReadNewsByIdCommand(newsController));
+                    case 8 -> invoker.setCommand(new ReadAuthorByIdCommand(authorController));
+                    case 9 -> System.out.println("TO DO get tag by id");
+                    case 10 -> invoker.setCommand(new UpdateNewsCommand(newsController));
+                    case 11 -> invoker.setCommand(new UpdateAuthorCommand(authorController));
+                    case 12 -> System.out.println("TO DO update tag");
+                    case 13-> invoker.setCommand(new DeleteNewsByIdCommand(newsController));
+                    case 14 ->invoker.setCommand(new DeleteAuthorByIdCommand(authorController));
+                    case 15 -> System.out.println("TO DO delete tag by id");
+                    case 16 -> System.out.println("TO DO Get author by news id");
+                    case 17 -> System.out.println("TO DO Get tags by news id.");
+                    case 18 -> System.out.println("TO DO Get news by various parameter");
                     case 0 -> System.out.println("By by!");
                     default -> System.out.println("Error!");
                 }

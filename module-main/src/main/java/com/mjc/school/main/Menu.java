@@ -16,14 +16,22 @@ public class Menu {
                     Enter the number of operation:
                     1 - Create news.
                     2 - Create author.
-                    3 - Get all news.
-                    4 - Get all authors.
-                    5 - Get news by id.
-                    6 - Get author by id.
-                    7 - Update news.
-                    8 - Update author.
-                    9 - Remove news by id.
-                    10 - Remove author by id.
+                    3 - Create tag.
+                    4 - Get all news.
+                    5 - Get all authors.
+                    6 - Get all tags.
+                    7 - Get news by id.
+                    8 - Get author by id.
+                    9 - Get tag by id.
+                    10 - Update news.
+                    11 - Update author.
+                    12 - Update tag.
+                    13 - Delete news by id.
+                    14 - Delete author by id.
+                    15 - Delete tag by id.
+                    16 - Get author by news id.
+                    17 - Get tags by news id.
+                    18 - Get news by various parameter.
                     0 - Exit.
                     """;
 
