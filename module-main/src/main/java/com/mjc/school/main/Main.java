@@ -13,6 +13,7 @@ import java.io.IOException;
 @SpringBootApplication
 @EnableAutoConfiguration
 @EnableJpaAuditing
+@EnableAspectJAutoProxy
 @ComponentScan("com.mjc.school.*")
 public class Main {
     public static void main(String[] args) throws IOException {
