@@ -2,15 +2,30 @@ package com.mjc.school.repository.entity;
 
 import com.mjc.school.repository.dto.AuthorModelRequest;
 import com.mjc.school.repository.model.BaseEntity;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+@Table(name = "authors")
 public class AuthorModel implements BaseEntity<Long> {
-
     private static Long idGenerator = 0L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 15, unique = true)
     private String name;
+
+    @Column(nullable = false)
+    @CreatedDate
     private LocalDateTime createDate;
+
+    @Column(nullable = false)
+    @LastModifiedDate
     private LocalDateTime lastUpdateTime;
 
     public AuthorModel(AuthorModelRequest authorModelRequest) {
