@@ -2,8 +2,8 @@ package com.mjc.school.controller.impl.command.author;
 
 import com.mjc.school.controller.BaseController;
 import com.mjc.school.controller.Command;
-import com.mjc.school.service.dto.AuthorDtoRequest;
-import com.mjc.school.service.dto.AuthorDtoResponse;
+import com.mjc.school.service.dto.author.AuthorDtoRequest;
+import com.mjc.school.service.dto.author.AuthorDtoResponse;
 
 import static com.mjc.school.controller.constans.Constants.GET_ALL_AUTHORS;
 

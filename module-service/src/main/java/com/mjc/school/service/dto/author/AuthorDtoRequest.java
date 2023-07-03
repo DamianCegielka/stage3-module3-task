@@ -1,4 +1,4 @@
-package com.mjc.school.service.dto;
+package com.mjc.school.service.dto.author;
 
 public class AuthorDtoRequest {
     private Long id;

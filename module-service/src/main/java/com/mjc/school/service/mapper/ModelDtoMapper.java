@@ -2,10 +2,10 @@ package com.mjc.school.service.mapper;
 
 import com.mjc.school.repository.entity.AuthorModel;
 import com.mjc.school.repository.entity.NewsModel;
-import com.mjc.school.service.dto.AuthorDtoRequest;
-import com.mjc.school.service.dto.AuthorDtoResponse;
-import com.mjc.school.service.dto.NewsDtoRequest;
-import com.mjc.school.service.dto.NewsDtoResponse;
+import com.mjc.school.service.dto.author.AuthorDtoRequest;
+import com.mjc.school.service.dto.author.AuthorDtoResponse;
+import com.mjc.school.service.dto.news.NewsDtoRequest;
+import com.mjc.school.service.dto.news.NewsDtoResponse;
 import org.springframework.stereotype.Component;
 
 public class ModelDtoMapper {

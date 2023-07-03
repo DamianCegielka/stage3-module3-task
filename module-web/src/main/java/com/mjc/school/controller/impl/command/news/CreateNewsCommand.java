@@ -3,8 +3,8 @@ package com.mjc.school.controller.impl.command.news;
 import com.mjc.school.controller.BaseController;
 import com.mjc.school.controller.Command;
 import com.mjc.school.controller.questions.AskQuestionsToGetNewsDtoRequest;
-import com.mjc.school.service.dto.NewsDtoRequest;
-import com.mjc.school.service.dto.NewsDtoResponse;
+import com.mjc.school.service.dto.news.NewsDtoRequest;
+import com.mjc.school.service.dto.news.NewsDtoResponse;
 
 import static com.mjc.school.controller.constans.Constants.CREATE_NEWS;
 

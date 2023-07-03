@@ -1,6 +1,6 @@
 package com.mjc.school.controller.questions;
 
-import com.mjc.school.service.dto.AuthorDtoRequest;
+import com.mjc.school.service.dto.author.AuthorDtoRequest;
 
 import java.io.IOException;
 

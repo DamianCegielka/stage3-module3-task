@@ -1,6 +1,6 @@
 package com.mjc.school.controller.questions;
 
-import com.mjc.school.service.dto.NewsDtoRequest;
+import com.mjc.school.service.dto.news.NewsDtoRequest;
 
 import static com.mjc.school.controller.constans.Constants.ENTER_AUTHOR_ID;
 import static com.mjc.school.controller.constans.Constants.ENTER_TITLE;
