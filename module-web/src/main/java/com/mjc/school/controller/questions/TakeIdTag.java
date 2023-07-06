@@ -6,7 +6,7 @@ public class TakeIdTag {
 
     TakeNumberFromKeyboard questionNumber = new TakeNumberFromKeyboard();
 
-    public Long takeIdNews() {
+    public Long takeIdTag() {
         try {
             System.out.println(ENTER_TAG_ID);
             return Long.valueOf(questionNumber.takeNumberFromKeyboard());

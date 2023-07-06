@@ -25,4 +25,5 @@ public class Constants {
     public static final String ENTER_TAG_ID = "Enter tag id";
     public static final String CREATE_TAG = "Create tag.";
     public static final String ENTER_TAG_NAME = "Enter tag name";
+    public static final String REMOVE_TAG = "Operation: Remove tag by id.";
 }
