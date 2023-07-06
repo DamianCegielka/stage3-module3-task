@@ -6,6 +6,7 @@ import com.mjc.school.controller.impl.command.news.*;
 import com.mjc.school.controller.impl.command.tag.CreateTagCommand;
 import com.mjc.school.controller.impl.command.tag.ReadAllTagCommand;
 import com.mjc.school.controller.impl.command.tag.ReadTagByIdCommand;
+import com.mjc.school.controller.impl.command.tag.UpdateTagCommand;
 import com.mjc.school.service.dto.author.AuthorDtoRequest;
 import com.mjc.school.service.dto.author.AuthorDtoResponse;
 import com.mjc.school.service.dto.news.NewsDtoRequest;
@@ -58,7 +59,7 @@ public class CommandFactory {
                     case 9 -> invoker.setCommand(new ReadTagByIdCommand(tagController));
                     case 10 -> invoker.setCommand(new UpdateNewsCommand(newsController));
                     case 11 -> invoker.setCommand(new UpdateAuthorCommand(authorController));
-                    case 12 -> System.out.println("TO DO update tag");
+                    case 12 -> invoker.setCommand(new UpdateTagCommand(tagController));
                     case 13-> invoker.setCommand(new DeleteNewsByIdCommand(newsController));
                     case 14 ->invoker.setCommand(new DeleteAuthorByIdCommand(authorController));
                     case 15 -> System.out.println("TO DO delete tag by id");
