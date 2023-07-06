@@ -6,6 +6,9 @@ import com.mjc.school.repository.dto.AuthorModelResponse;
 import com.mjc.school.repository.entity.AuthorModel;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -21,19 +24,15 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
         dataSource.loadAuthorsFromDataSource();
     }
 
+    @PersistenceUnit
+    private EntityManagerFactory entityManagerFactory;
+
     @Override
     public List<AuthorModel> readAll() {
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            return entityManager.createQuery("SELECT a FROM AuthorModel a", AuthorModel.class)
+                    .getResultList();
 
-        try {
-            AuthorModelResponse authorModelResponse = new AuthorModelResponse();
-            listAuthor.forEach(x -> {
-                authorModelResponse.map(x);
-                authorModelResponse.print();
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listAuthor;
     }
 
     @Override
@@ -49,11 +48,11 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     @Override
     public AuthorModel create(AuthorModel entity) {
-        AuthorModelResponse authorModelResponse = new AuthorModelResponse();
-        authorModelResponse.map(entity);
-        authorModelResponse.print();
-        listAuthor.add(entity);
-        return authorModelResponse.mapToAuthorModel();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(entity);
+        entityManager.getTransaction().commit();
+        return entity;
     }
 
     @Override

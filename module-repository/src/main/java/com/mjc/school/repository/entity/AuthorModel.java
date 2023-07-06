@@ -2,6 +2,7 @@ package com.mjc.school.repository.entity;
 
 import com.mjc.school.repository.dto.AuthorModelRequest;
 import com.mjc.school.repository.model.BaseEntity;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -11,7 +12,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "authors")
+@Data
+@Table(name = "author")
 public class AuthorModel implements BaseEntity<Long> {
     private static Long idGenerator = 0L;
     @Id
