@@ -20,4 +20,9 @@ public class Constants {
     public static final String UPDATE_AUTHOR = "Operation: Update author.";
     public static final String REMOVE_NEWS = "Operation: Remove news by id.";
     public static final String REMOVE_AUTHOR = "Operation: Remove author by id.";
+    public static final String GET_ALL_TAGS = "Operation: Get all tags.";
+    public static final String GET_TAG_ID = "Operation: Get tags by id.";
+    public static final String ENTER_TAG_ID = "Enter tag id";
+    public static final String CREATE_TAG = "Create tag.";
+    public static final String ENTER_TAG_NAME = "Enter tag name";
 }

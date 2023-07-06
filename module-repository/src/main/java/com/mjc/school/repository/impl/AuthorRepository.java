@@ -23,6 +23,7 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     @Override
     public List<AuthorModel> readAll() {
+
         try {
             AuthorModelResponse authorModelResponse = new AuthorModelResponse();
             listAuthor.forEach(x -> {
