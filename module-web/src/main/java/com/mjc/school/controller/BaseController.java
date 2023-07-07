@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-@Controller
+
 public interface BaseController<T, R, K> {
 
     List<R> readAll();
