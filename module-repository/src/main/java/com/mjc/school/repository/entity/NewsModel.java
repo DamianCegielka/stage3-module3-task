@@ -2,18 +2,49 @@ package com.mjc.school.repository.entity;
 
 import com.mjc.school.repository.dto.NewsModelRequest;
 import com.mjc.school.repository.model.BaseEntity;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
-
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+@Table(name = "news")
 public class NewsModel implements BaseEntity<Long> {
 
     private static Long idGenerator = 0L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 30)
     private String title;
+
+    @Column(nullable = false)
     private String content;
+
+    @Column(nullable = false)
+    @CreatedDate
     private LocalDateTime createDate;
+
+    @Column(nullable = false)
+    @LastModifiedDate
     private LocalDateTime lastUpdateTime;
     private Long authorId;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private AuthorModel authorModel;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "news_tag",
+            joinColumns = @JoinColumn(name = "news_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<TagModel> tagModels;
 
     @Override
     public Long getId() {
@@ -86,5 +117,21 @@ public class NewsModel implements BaseEntity<Long> {
 
     public Long getAuthorId() {
         return authorId;
+    }
+
+    public void setAuthorModel(AuthorModel authorModel) {
+        this.authorModel = authorModel;
+    }
+
+    public AuthorModel getAuthorModel() {
+        return authorModel;
+    }
+
+    public List<TagModel> getTagModels() {
+        return tagModels;
+    }
+
+    public void setTagModels(List<TagModel> tags) {
+        this.tagModels = tags;
     }
 }

@@ -4,8 +4,12 @@ import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.DataSource;
 import com.mjc.school.repository.dto.NewsModelResponse;
 import com.mjc.school.repository.entity.NewsModel;
+import com.mjc.school.repository.entity.TagModel;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -17,79 +21,68 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
 
     public NewsRepository() {
         dataSource.loadNewsFromDataSource();
+
     }
 
     private List<NewsModel> listNews = dataSource.getListNews();
 
+    @PersistenceUnit
+    private EntityManagerFactory entityManagerFactory;
+
     @Override
     public List<NewsModel> readAll() {
-        try {
-            NewsModelResponse newsModelResponse = new NewsModelResponse();
-            listNews.forEach(x -> {
-                newsModelResponse.map(x);
-                newsModelResponse.print();
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listNews;
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return entityManager.createQuery("SELECT n FROM NewsModel n", NewsModel.class)
+                .getResultList();
     }
 
     @Override
     public Optional<NewsModel> readById(Long id) {
-        NewsModelResponse newsModelResponse = new NewsModelResponse();
-        listNews.forEach(x -> {
-            boolean b = x.getId().equals(id);
-            if (b) newsModelResponse.map(x);
-            if (b) newsModelResponse.print();
-        });
-        return Optional.ofNullable(newsModelResponse.mapToNews());
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return Optional.ofNullable(entityManager.find(NewsModel.class, id));
     }
 
     @Override
     public NewsModel create(NewsModel entity) {
-        NewsModelResponse newsModelResponse = new NewsModelResponse();
-        newsModelResponse.map(entity);
-        newsModelResponse.print();
-        listNews.add(entity);
-        return newsModelResponse.mapToNews();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(entity);
+        entityManager.getTransaction().commit();
+        return entity;
     }
 
     @Override
     public NewsModel update(NewsModel entity) {
-        NewsModelResponse newsModelResponse = new NewsModelResponse();
-        listNews.forEach(x -> {
-            boolean b = x.getId().equals(entity.getId());
-            if (b) x.setTitle(entity.getTitle());
-            if (b) x.setContent(entity.getContent());
-            if (b) x.setAuthorId(entity.getAuthorId());
-            if (b) x.setLastUpdateTime(LocalDateTime.now());
-            if (b) newsModelResponse.map(x);
-            if (b) newsModelResponse.print();
-
-        });
-        return newsModelResponse.mapToNews();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        NewsModel updatedModel = entityManager.find(NewsModel.class, entity.getId());
+        updatedModel.setTitle(entity.getTitle());
+        updatedModel.setContent(entity.getContent());
+        updatedModel.setAuthorModel(entity.getAuthorModel());
+        List<TagModel> tagsToUpdate = entity.getTagModels();
+        if (!tagsToUpdate.isEmpty()) {
+            updatedModel.setTagModels(tagsToUpdate);
+        }
+        entityManager.getTransaction().commit();
+        return updatedModel;
 
     }
 
     @Override
     public boolean deleteById(Long id) {
-        if (listNews.removeIf(x -> x.getId().equals(id))) {
-            System.out.println(true);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        if (readById(id).isPresent()) {
+            entityManager.getTransaction().begin();
+            entityManager.remove(entityManager.find(NewsModel.class, id));
+            entityManager.getTransaction().commit();
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     @Override
     public boolean existById(Long id) {
-        for (NewsModel news : listNews) {
-            if (news.getId().equals(id)) {
-                return true;
-            }
-        }
-        return false;
+        return readById(id).isPresent();
     }
 
 }

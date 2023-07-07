@@ -18,10 +18,11 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     private final DataSource dataSource = new DataSource();
 
-    private List<AuthorModel> listAuthor = dataSource.getListAuthor();
+    private List<AuthorModel> listAuthor ;
+
 
     public AuthorRepository() {
-        dataSource.loadAuthorsFromDataSource();
+        //dataSource.loadAuthorsFromDataSource();
     }
 
     @PersistenceUnit
@@ -37,13 +38,8 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     @Override
     public Optional<AuthorModel> readById(Long id) {
-        AuthorModelResponse authorModelResponse = new AuthorModelResponse();
-        listAuthor.forEach(x -> {
-            boolean b = x.getId().equals(id);
-            if (b) authorModelResponse.map(x);
-            if (b) authorModelResponse.print();
-        });
-        return Optional.ofNullable(authorModelResponse.mapToAuthorModel());
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return Optional.ofNullable(entityManager.find(AuthorModel.class, id));
     }
 
     @Override
@@ -57,35 +53,28 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     @Override
     public AuthorModel update(AuthorModel entity) {
-        AuthorModelResponse authorModelResponse = new AuthorModelResponse();
-        listAuthor.forEach(x -> {
-            boolean b = x.getId().equals(entity.getId());
-            if (b) x.setName(entity.getName());
-            if (b) x.setLastUpdateTime(LocalDateTime.now());
-            if (b) authorModelResponse.map(x);
-            if (b) authorModelResponse.print();
-
-        });
-        return authorModelResponse.mapToAuthorModel();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AuthorModel updatedModel = entityManager.find(AuthorModel.class, entity.getId());
+        updatedModel.setName(entity.getName());
+        entityManager.getTransaction().commit();
+        return updatedModel;
     }
 
     @Override
     public boolean deleteById(Long id) {
-        if (listAuthor.removeIf(x -> x.getId().equals(id))) {
-            System.out.println(true);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        if (readById(id).isPresent()) {
+            entityManager.getTransaction().begin();
+            entityManager.remove(entityManager.find(AuthorModel.class, id));
+            entityManager.getTransaction().commit();
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     @Override
     public boolean existById(Long id) {
-        for (AuthorModel author : listAuthor) {
-            if (author.getId().equals(id)) {
-                return true;
-            }
-        }
-        return false;
+        return readById(id).isPresent();
     }
 }

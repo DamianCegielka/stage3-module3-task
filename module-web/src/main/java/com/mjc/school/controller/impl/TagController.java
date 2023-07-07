@@ -14,9 +14,9 @@ import java.util.List;
 @Controller
 public class TagController implements BaseController<TagDtoRequest, TagDtoResponse, Long> {
 
-    @Autowired
-    public final BaseService<TagDtoRequest, TagDtoResponse, Long> service;
 
+    public final BaseService<TagDtoRequest, TagDtoResponse, Long> service;
+    @Autowired
     public TagController(BaseService<TagDtoRequest, TagDtoResponse, Long> service) {
         this.service = service;
     }

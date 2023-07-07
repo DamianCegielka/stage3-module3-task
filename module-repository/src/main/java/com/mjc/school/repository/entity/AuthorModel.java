@@ -9,11 +9,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Data
-@Table(name = "author")
+@Table(name = "authors")
 public class AuthorModel implements BaseEntity<Long> {
     private static Long idGenerator = 0L;
     @Id
@@ -29,6 +29,9 @@ public class AuthorModel implements BaseEntity<Long> {
     @Column(nullable = false)
     @LastModifiedDate
     private LocalDateTime lastUpdateTime;
+
+    @OneToMany(mappedBy = "authorModel", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<NewsModel> news;
 
     public AuthorModel(AuthorModelRequest authorModelRequest) {
         idGenerator++;

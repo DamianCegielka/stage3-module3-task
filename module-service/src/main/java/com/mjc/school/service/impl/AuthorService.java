@@ -26,6 +26,7 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     private AuthorDtoRequestMapperToAuthorModel mapAuthorDtoRequestToAuthorModel = new ModelDtoMapper.MapAuthorDtoRequestToAuthorModel();
     private Validator validator = new Validator();
 
+    @Autowired
     public AuthorService(BaseRepository<AuthorModel, Long> repository) {
         this.repository = repository;
     }

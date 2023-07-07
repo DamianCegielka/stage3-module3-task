@@ -58,7 +58,7 @@ public class CommandFactory {
                 case 12 -> invoker.setCommand(new UpdateTagCommand(tagController));
                 case 13 -> invoker.setCommand(new DeleteNewsByIdCommand(newsController));
                 case 14 -> invoker.setCommand(new DeleteAuthorByIdCommand(authorController));
-                case 15 -> invoker.setCommand( new DeleteTagByIdCommand(tagController));
+                case 15 -> invoker.setCommand(new DeleteTagByIdCommand(tagController));
                 case 16 -> System.out.println("TO DO Get author by news id");
                 case 17 -> System.out.println("TO DO Get tags by news id.");
                 case 18 -> System.out.println("TO DO Get news by various parameter");

@@ -1,7 +1,10 @@
 package com.mjc.school.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public interface BaseService<T, R, K> {
     List<R> readAll();
 

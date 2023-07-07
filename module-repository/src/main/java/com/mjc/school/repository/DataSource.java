@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataSource {
-    private static final String FILE_PATH_DATA_SOURCE_NEWS = "module-repository\\src\\main\\resources\\newsdc.txt";
-    private static final String FILE_PATH_DATA_SOURCE_AUTHOR = "module-repository\\src\\main\\resources\\authordc.txt";
+   private static final String FILE_PATH_DATA_SOURCE_NEWS = "module-repository\\src\\main\\resources\\newsdc.txt";
+   private static final String FILE_PATH_DATA_SOURCE_AUTHOR = "module-repository\\src\\main\\resources\\authordc.txt";
 
     private List<NewsModel> listNews = new ArrayList<>();
     private ArrayList<AuthorModel> listAuthor = new ArrayList<>();

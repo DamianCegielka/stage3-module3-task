@@ -6,6 +6,24 @@ mainClassName = 'com.mjc.school.Main'
 
 dependencies {
     implementation project(':module-web')
+    implementation project(':module-service')
+    implementation project(':module-repository')
+}
+
+run {
+    standardInput = System.in
+}
+
+
+
+/*plugins {
+    id 'application'
+}
+
+mainClassName = 'com.mjc.school.Main'
+
+dependencies {
+    implementation project(':module-web')
     implementation project(path: ':module-web')
     implementation project(path: ':module-repository')
     implementation project(path: ':module-service')
@@ -16,3 +34,6 @@ dependencies {
 run {
     standardInput = System.in
 }
+
+
+ */
