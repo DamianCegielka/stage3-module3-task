@@ -2,7 +2,6 @@ package com.mjc.school.repository.impl;
 
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.DataSource;
-import com.mjc.school.repository.dto.NewsModelResponse;
 import com.mjc.school.repository.entity.NewsModel;
 import com.mjc.school.repository.entity.TagModel;
 import org.springframework.stereotype.Repository;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

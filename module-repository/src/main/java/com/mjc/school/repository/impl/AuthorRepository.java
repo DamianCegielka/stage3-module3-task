@@ -2,14 +2,12 @@ package com.mjc.school.repository.impl;
 
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.DataSource;
-import com.mjc.school.repository.dto.AuthorModelResponse;
 import com.mjc.school.repository.entity.AuthorModel;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,11 +16,8 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     private final DataSource dataSource = new DataSource();
 
-    private List<AuthorModel> listAuthor ;
-
 
     public AuthorRepository() {
-        //dataSource.loadAuthorsFromDataSource();
     }
 
     @PersistenceUnit

@@ -15,13 +15,13 @@ public class DataSource {
    private static final String FILE_PATH_DATA_SOURCE_AUTHOR = "module-repository\\src\\main\\resources\\authordc.txt";
 
     private List<NewsModel> listNews = new ArrayList<>();
-    private ArrayList<AuthorModel> listAuthor = new ArrayList<>();
+    private List<AuthorModel> listAuthor = new ArrayList<>();
 
     public List<NewsModel> getListNews() {
         return listNews;
     }
 
-    public ArrayList<AuthorModel> getListAuthor() {
+    public List<AuthorModel> getListAuthor() {
         return listAuthor;
     }
 

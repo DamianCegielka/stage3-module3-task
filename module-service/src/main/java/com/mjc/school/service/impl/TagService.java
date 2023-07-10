@@ -16,8 +16,6 @@ import java.util.Optional;
 @Service
 public class TagService implements BaseService<TagDtoRequest, TagDtoResponse, Long> {
 
-    private static final String NON_EXISTED_ID = "Tag with that ID does not exist";
-
     private final BaseRepository<TagModel, Long> tagRepository;
 
     @Autowired
@@ -40,7 +38,7 @@ public class TagService implements BaseService<TagDtoRequest, TagDtoResponse, Lo
         if (tagModel.isPresent()) {
             return TagMapper.INSTANCE.tagModelToDto(tagModel.get());
         } else {
-            throw new TagIsDoesNotExistException(2010L);
+            throw new TagIsDoesNotExistException();
         }
     }
 
@@ -57,7 +55,7 @@ public class TagService implements BaseService<TagDtoRequest, TagDtoResponse, Lo
             TagModel tagModel = tagRepository.update(TagMapper.INSTANCE.tagDtoToModel(updateRequest));
             return TagMapper.INSTANCE.tagModelToDto(tagModel);
         } else {
-            throw new TagIsDoesNotExistException(2010L);
+            throw new TagIsDoesNotExistException();
         }
     }
 
@@ -67,7 +65,7 @@ public class TagService implements BaseService<TagDtoRequest, TagDtoResponse, Lo
         if (tagRepository.existById(id)) {
             return tagRepository.deleteById(id);
         } else {
-            throw new TagIsDoesNotExistException(2010L);
+            throw new TagIsDoesNotExistException();
         }
     }
 }

@@ -1,7 +1,5 @@
 package com.mjc.school.controller;
 
-import org.springframework.stereotype.Controller;
-
 import java.util.List;
 
 

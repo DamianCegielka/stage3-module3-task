@@ -1,4 +1,4 @@
 package com.mjc.school.service.dto.tag;
 
-public class TagDtoResponse {
+public interface TagDtoResponse {
 }
