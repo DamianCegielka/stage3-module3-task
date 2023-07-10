@@ -17,9 +17,6 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     private final DataSource dataSource = new DataSource();
 
 
-    public AuthorRepository() {
-    }
-
     @PersistenceUnit
     private EntityManagerFactory entityManagerFactory;
 

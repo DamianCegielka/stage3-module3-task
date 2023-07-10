@@ -2,7 +2,6 @@ package com.mjc.school.controller.impl.command.tag;
 
 import com.mjc.school.controller.BaseController;
 import com.mjc.school.controller.Command;
-import com.mjc.school.controller.questions.TakeIdNews;
 import com.mjc.school.controller.questions.TakeIdTag;
 import com.mjc.school.service.dto.tag.TagDtoRequest;
 import com.mjc.school.service.dto.tag.TagDtoResponse;
